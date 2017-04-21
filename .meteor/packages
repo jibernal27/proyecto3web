@@ -30,3 +30,4 @@ mdg:validated-method
 aldeed:simple-schema
 
 ddp-rate-limiter
+practicalmeteor:mocha
