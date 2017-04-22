@@ -4,7 +4,7 @@ EJECUCION DEL PROYECTO
 Es necesario tener instalado en el computador node.js y meteor.
 
 Para la ejecucion del proyecto es necesario navegar al directiorio por terminal y ejecutar los siguientes comandos:
-```bash
+```meteor
 npm install
 meteor npm install --save bcrypt
 meteor
@@ -18,9 +18,9 @@ Es necesario tener node.js y meteor.
 Es necesario abrir una terminal en MODO ADMINISTRADOR
 
 Para la ejecucion de las pruebas es necesario navegar al directiorio y ejecutar los siguientes comandos:
-```bash
+```meteor
 npm install
 meteor npm install --save bcrypt
-meteor test --driver-package practicalmeteor:mocha
+meteor test --full-app --driver-package practicalmeteor:mocha
 ```
 
