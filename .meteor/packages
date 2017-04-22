@@ -31,3 +31,6 @@ aldeed:simple-schema
 
 ddp-rate-limiter
 practicalmeteor:mocha
+practicalmeteor:chai
+dburles:factory
+xolvio:cleaner

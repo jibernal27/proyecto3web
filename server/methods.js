@@ -38,7 +38,7 @@ export const addImagen = new ValidatedMethod({
   name: 'addImagen',
   validate: new SimpleSchema({
     url: { type: String },
-    snippet:{type: String},
+    snippet:{type: String,optional:true},
     title:{type: String}
   }).validator(),
   run({ url,snippet,title }) {
@@ -52,8 +52,11 @@ export const addImagen = new ValidatedMethod({
 			throw new Meteor.Error('not-url')
 		}
 		console.log("Adding "+ url+" "+ snippet+" "+ title)
-
-			Imagenes.insert({
+			if(!snippet)
+			{
+				 snippet=""
+			}
+			return Imagenes.insert({
 			url:url,
 			title:title,
 			snippet:snippet,
@@ -63,6 +66,8 @@ export const addImagen = new ValidatedMethod({
 			disLikes:0,
 			votos:0
 		});
+
+			 
 		
 		}
   
