@@ -18,9 +18,14 @@ Es necesario tener node.js y meteor.
 Es necesario abrir una terminal en MODO ADMINISTRADOR
 
 Para la ejecucion de las pruebas es necesario navegar al directiorio y ejecutar los siguientes comandos:
-```meteor
-npm install
+```npm install
 meteor npm install --save bcrypt
-meteor test --full-app --driver-package practicalmeteor:mocha
+meteor npm i --save-dev enzyme
+meteor npm install --save react-test-renderer
+meteor npm install --save react-addons-tests-utils
+meteor add practicalmeteor:mocha
+meteor add practicalmeteor:chai
+meteor add dburles:factory
+meteor test --driver-package practicalmeteor:mocha
 ```
 

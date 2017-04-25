@@ -1,30 +1,54 @@
-import {meteor} from "meteor/meteor";
-import { Factory } from 'meteor/dburles:factory';
+import { meteor } from "meteor/meteor";
 import React from "react";
-import { assert } from "meteor/practicalmeteor:chai";
-import { ImagePreview } from "./ImagePreview.jsx";
-import { ImageWrapper } from "./ImagenesWrapper.jsx"
+import { random } from "meteor/random";
+import { assert } from 'meteor/practicalmeteor:chai';
+import { Factory } from 'meteor/dburles:factory';
+import { shallow, mount } from 'enzyme';
+
+import ImagePreview from "./ImagePreview.jsx";
+import ImagenesWrapper from "./ImagenesWrapper.jsx";
+import Buscador from "./Buscador.jsx";
+//import { ImageCollection } from "../../server/publish.js";
+
 
 
 if(Meteor.isClient){
 
-  Factory.define('imagen', Imagenes, {});
-
+Factory.define('imagen', ImagePreview, {});
   describe("Imagenes", () =>{
-    this.timeout(1500000);
-
-    beforEach(function (){
-
-    });
-
     it("Deberia renderizar el componente imagenes", function(){
-      const testProject = Factory.build("ImagePreview",{
-        'url':'https://www.w3schools.com/html/pic_mountain.jpg',
-        'title':'test'
-      });
-      const result = shallow(<ImageWrapper id = {testImagePreview} />);
-      chai.assert(result.hasClass('imagen'));
-    });
 
-  });
+      const testImagePreview = Factory.build('imagen',{
+        'url':'',
+        'title':''
+      })
+
+      const sha = shallow(<ImagePreview id={testImagePreview._id} imagen={testImagePreview} />);
+
+      chai.assert(sha.hasClass('imagen'));
+    })
+
+  })
+
+  describe("buscador", () =>{
+    it("Deberia renderizar el componente buscador", function(){
+
+      const sha = shallow(<Buscador/>);
+      const das = sha.
+
+      chai.assert.equal(sha.find('input[type="text"]').prop('defaultValue'),'');
+
+    })
+
+    /**describe("wrapper", () =>{
+      it("Deberia renderizar el componente wrapper", function(){
+
+        const sha = shallow(<ImageWrapper/>);
+        chai.assert(true);
+
+      })*/
+
+  })
+
+
 }
