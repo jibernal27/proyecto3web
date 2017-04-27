@@ -34,19 +34,10 @@ Factory.define('imagen', ImagePreview, {});
     it("Deberia renderizar el componente buscador", function(){
 
       const sha = shallow(<Buscador/>);
-      const das = sha.
 
-      chai.assert.equal(sha.find('input[type="text"]').prop('defaultValue'),'');
+      chai.assert.equal(sha.find('input[type="text"]').prop('defaultValue'),'20');
 
     })
-
-    /**describe("wrapper", () =>{
-      it("Deberia renderizar el componente wrapper", function(){
-
-        const sha = shallow(<ImageWrapper/>);
-        chai.assert(true);
-
-      })*/
 
   })
 

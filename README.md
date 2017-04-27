@@ -7,6 +7,7 @@ Para la ejecucion del proyecto es necesario navegar al directiorio por terminal 
 ```meteor
 npm install
 meteor npm install --save bcrypt
+set MONGO_URL=mongodb://1:1@ds141960.mlab.com:41960/meteor
 meteor
 ```
 
@@ -28,4 +29,3 @@ meteor add practicalmeteor:chai
 meteor add dburles:factory
 meteor test --driver-package practicalmeteor:mocha
 ```
-

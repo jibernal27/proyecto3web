@@ -1,6 +1,9 @@
 import { chai, expect } from 'meteor/practicalmeteor:chai';
 
 console.log("Carga los test del cliente")
+
+
+if(Meteor.isServer){
 describe('Accounts',  () =>{
 
   beforeEach(function (done) {
@@ -16,7 +19,6 @@ describe('Methos not autenticated',  () =>{
     Meteor.call('test.resetDatabase', done);
 
   });
-
 
   it('No se puede insertar una imagen con campos no validos ',function(){
     const insertImagen=new Promise((resolve, reject) =>{
@@ -37,9 +39,8 @@ describe('Methos not autenticated',  () =>{
 
     });
     return insertImagen.then(function(logro){
-      expect(logro).to.equal.(true);
+      expect(logro).to.be.ok;
     });
-
   });
 
 
@@ -62,7 +63,7 @@ describe('Methos not autenticated',  () =>{
 
     });
     return likeIMage.then(function(logro){
-      expect(logro).to.equal.(true);
+      expect(logro).to.be.ok;
     });
 
   });
@@ -81,13 +82,13 @@ describe('Methods',function()
   });
 
 
-  it('El usuario es creado correctamente' , function() {
+  it('El usuario no se creo correctamente' , function() {
     var userId=Meteor.userId()
     expect(userId).to.not.be.undefined;
-  });  
+  });
 
 
-  it('No se puede instar una imagen con una url no valida' , function() {
+  it('No se verifica la url de una imagen' , function() {
     const insertImagen=new Promise((resolve, reject) =>{
       Meteor.call('addImagen',{url:"a",snippet:"Imagen invalida",title:"imagen invalida"},(error,data)=>{
         if(error)
@@ -107,12 +108,12 @@ describe('Methods',function()
     });
 
     return insertImagen.then(function(logro){
-      expect(logro).to.equal.(true);
+      expect(logro).to.be.ok;
     });
 
-  }); 
+  });
 
-  it('Se instera una imagen exitosamente',function(){
+  it('No se instera una imagen exitosamente',function(){
     const insertImagen=new Promise((resolve, reject) =>{
       Meteor.call('addImagen',{url:"www.imagen.com/imagen.jpg",snippet:"Imagen valida",title:"imagen valida"},(error,data)=>{
         if(error)
@@ -131,13 +132,13 @@ describe('Methods',function()
 
     });
     return insertImagen.then(function(logro){
-      expect(logro).to.equal.(true);
+      expect(logro).to.be.ok;
     });
 
   });
 
 
-  it('No se puede instar una imagen con campos no validos ',function(){
+  it('Se puede instar una imagen con campos no validos ',function(){
     const insertImagen=new Promise((resolve, reject) =>{
       Meteor.call('addImagen',{url:{},snippet:{},title:1000},(error,data)=>{
         if(error)
@@ -156,13 +157,13 @@ describe('Methods',function()
 
     });
     return insertImagen.then(function(logro){
-      expect(logro).to.equal.(true);
+      expect(logro).to.be.ok;
     });
 
   });
 
 
-  it('Se da me gusta a una imagen valida ',function(){
+  it('No se da me gusta a una imagen valida ',function(){
 
       const insertImagen=new Promise((resolve, reject) =>{
         Meteor.call('addImagen',{url:"www.imagen.com/imagen.jpg",snippet:"Imagen valida",title:"imagen valida"},(error,data)=>{
@@ -204,14 +205,17 @@ describe('Methods',function()
 
 
       return likeIMage.then(function(logro){
-        expect(logro).to.equal.(true);
+        expect(logro).to.be.ok;
       });
 
 
-  
+
     });
 
 
 
 
   });
+
+});
+}
