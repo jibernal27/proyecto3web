@@ -64,10 +64,10 @@ export default class ImagenesWrapper extends TrackerReact(Component){
 				   className="form-control"
 				   placeholder="Palabra clave a buscar"/>
 
-			<label htmlFor="nymber">Número de imagenes</label>
+				 <label htmlFor="number">Número de imagenes</label>
 			<input type="number"
 				   ref="numeroImagenes"
-				   id="nymber"
+				   id="number"
 				   min="1"
 				   max="100"
 				   required="required"

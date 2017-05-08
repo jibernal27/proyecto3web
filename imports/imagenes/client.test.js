@@ -3,7 +3,7 @@ import { chai, expect } from 'meteor/practicalmeteor:chai';
 console.log("Carga los test del cliente")
 
 
-if(Meteor.isServer){
+if(Meteor.isClient){
 describe('Accounts',  () =>{
 
   beforeEach(function (done) {
@@ -77,18 +77,18 @@ describe('Methods',function()
   beforeEach(function (done) {
     Meteor.call('test.resetDatabase', done);
     Meteor.call('test.createUser');
-    Meteor.loginWithPassword({email:'demo@demo.com'},'demopassword');
+    Meteor.loginWithPassword({email:'demoTest@demoTest.com'},'demoTestpassword');
 
   });
 
 
-  it('El usuario no se creo correctamente' , function() {
+  it('Deberia crearse un usuario correctamente' , function() {
     var userId=Meteor.userId()
     expect(userId).to.not.be.undefined;
   });
 
 
-  it('No se verifica la url de una imagen' , function() {
+  it('Deberia verificarse la url de la imagen' , function() {
     const insertImagen=new Promise((resolve, reject) =>{
       Meteor.call('addImagen',{url:"a",snippet:"Imagen invalida",title:"imagen invalida"},(error,data)=>{
         if(error)
@@ -113,7 +113,7 @@ describe('Methods',function()
 
   });
 
-  it('No se instera una imagen exitosamente',function(){
+  it('Deberia insertarse una imagen correctamente',function(){
     const insertImagen=new Promise((resolve, reject) =>{
       Meteor.call('addImagen',{url:"www.imagen.com/imagen.jpg",snippet:"Imagen valida",title:"imagen valida"},(error,data)=>{
         if(error)
@@ -200,10 +200,6 @@ describe('Methods',function()
           });
 
         });
-
-
-
-
       return likeIMage.then(function(logro){
         expect(logro).to.be.ok;
       });
